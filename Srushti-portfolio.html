@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srushti Bilurkar | Portfolio (Light)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#FFFFFF;
+  --bg-2:#F3F5FA;
+  --card:#FFFFFF;
+  --card-hover:#F7F9FC;
+  --line:#E3E7F0;
+  --text:#151A24;
+  --text-dim:#5B6576;
+  --text-faint:#8A93A3;
+  --accent1:#3D6BF0;
+  --accent2:#7C4FE0;
+  --accent3:#0BA89A;
+  --grad:linear-gradient(120deg, var(--accent1), var(--accent2));
+  --grad-2:linear-gradient(120deg, var(--accent3), var(--accent1));
+}
+*{margin:0; padding:0; box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Sora',sans-serif;}
+a{color:inherit; text-decoration:none;}
+::selection{background:var(--accent2); color:#fff;}
+.wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+/* ambient glow */
+.glow{
+  position:fixed; z-index:0; border-radius:50%;
+  filter:blur(120px); opacity:.14; pointer-events:none;
+}
+.glow1{width:520px; height:520px; background:var(--accent2); top:-160px; right:-160px;}
+.glow2{width:420px; height:420px; background:var(--accent3); bottom:10%; left:-160px;}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  background:rgba(255,255,255,0.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px; margin:0 auto; padding:18px 32px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.logo{font-family:'Sora',sans-serif; font-weight:700; font-size:18px;}
+.logo span{background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;}
+.nav-links{display:flex; gap:32px; font-size:14px; font-weight:500;}
+.nav-links a{color:var(--text-dim); transition:color .25s ease; position:relative;}
+.nav-links a:hover, .nav-links a.active{color:var(--text);}
+.nav-links a.active::after{
+  content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:var(--grad); border-radius:2px;
+}
+.nav-cta{
+  font-size:13px; font-weight:600; padding:9px 18px; border-radius:8px;
+  background:var(--grad); color:#fff;
+}
+.burger{display:none;}
+@media (max-width:760px){
+  .nav-links{display:none;}
+  .burger{display:block; font-size:22px; cursor:pointer;}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh; display:flex; align-items:center;
+  padding:140px 0 80px; position:relative; z-index:1;
+}
+.hero-grid{display:grid; grid-template-columns:1fr auto; gap:56px; align-items:center;}
+.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:var(--accent3);
+  border:1px solid rgba(34,211,192,0.3); background:rgba(34,211,192,0.08);
+  padding:7px 14px; border-radius:100px; margin-bottom:26px;
+}
+.badge .dot{width:7px; height:7px; border-radius:50%; background:var(--accent3); box-shadow:0 0 8px var(--accent3);}
+.hero h1{
+  font-size:clamp(38px,5.6vw,58px); font-weight:800; line-height:1.08; letter-spacing:-0.02em; margin-bottom:20px;
+}
+.hero h1 .grad-text{background:var(--grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;}
+.hero p.lead{
+  font-size:17px; color:var(--text-dim); max-width:56ch; margin-bottom:34px;
+}
+.btn-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:44px;}
+.btn{
+  padding:13px 26px; border-radius:9px; font-size:14.5px; font-weight:600;
+  display:inline-flex; align-items:center; gap:8px; transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn-primary{background:var(--grad); color:#fff; box-shadow:0 8px 24px -8px rgba(91,140,255,0.6);}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(91,140,255,0.75);}
+.btn-outline{border:1px solid var(--line); color:var(--text);}
+.btn-outline:hover{border-color:var(--accent1); color:var(--accent1);}
+.btn-resume{
+  background:var(--grad); color:#fff; border-radius:100px;
+  box-shadow:0 8px 24px -8px rgba(124,79,224,0.45);
+}
+.btn-resume:hover{transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(124,79,224,0.6);}
+.btn-resume u{text-decoration-thickness:2px;}
+.hero-stats{display:flex; gap:40px;}
+.hero-stats .n{font-family:'Sora',sans-serif; font-size:26px; font-weight:700;}
+.hero-stats .l{font-size:12px; color:var(--text-faint); margin-top:2px;}
+
+.avatar-wrap{position:relative; width:220px; height:220px;}
+.avatar-ring{
+  position:absolute; inset:0; border-radius:32px;
+  background:var(--grad); padding:3px;
+}
+.avatar{
+  width:100%; height:100%; border-radius:30px; background:var(--bg-2);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Sora',sans-serif; font-size:56px; font-weight:800;
+  color:var(--text);
+}
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr; text-align:left;}
+  .avatar-wrap{width:140px; height:140px; margin-bottom:8px;}
+}
+
+/* ---------- section shell ---------- */
+section{padding:110px 0; position:relative; z-index:1;}
+.section-tag{
+  font-size:13px; font-weight:700; letter-spacing:.14em; color:var(--accent1); text-transform:uppercase; margin-bottom:14px;
+}
+.section-title{font-size:clamp(28px,3.6vw,38px); font-weight:800; margin-bottom:48px; max-width:600px;}
+
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- about ---------- */
+.about-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:60px;}
+.about-grid p{color:var(--text-dim); font-size:16px; margin-bottom:16px; max-width:56ch;}
+.info-card{
+  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:26px 28px;
+  box-shadow:0 4px 24px -8px rgba(20,30,60,0.08);
+}
+.info-row{display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid var(--line); font-size:14px;}
+.info-row:last-child{border-bottom:none;}
+.info-row .k{color:var(--text-faint);}
+.info-row .v{color:var(--text); font-weight:500; text-align:right;}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+
+/* ---------- skills ---------- */
+.skills-wrap{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+.skill-card{
+  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px;
+  transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+  box-shadow:0 4px 20px -10px rgba(20,30,60,0.06);
+}
+.skill-card:hover{border-color:var(--accent1); transform:translateY(-3px); box-shadow:0 10px 30px -10px rgba(61,107,240,0.18);}
+.skill-card .icon{
+  width:40px; height:40px; border-radius:10px; background:var(--grad);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-family:'Sora',sans-serif; margin-bottom:14px;
+}
+.skill-card h4{font-size:15px; font-weight:700; margin-bottom:10px;}
+.pill-row{display:flex; flex-wrap:wrap; gap:7px;}
+.pill{font-size:12px; padding:5px 10px; border-radius:100px; background:#F5F7FB; border:1px solid var(--line); color:var(--text-dim);}
+@media (max-width:760px){.skills-wrap{grid-template-columns:1fr 1fr;}}
+@media (max-width:520px){.skills-wrap{grid-template-columns:1fr;}}
+
+/* ---------- experience ---------- */
+.exp-list{display:flex; flex-direction:column; gap:0;}
+.exp-item{
+  display:grid; grid-template-columns:180px 1fr; gap:32px;
+  padding:34px 0; border-bottom:1px solid var(--line);
+}
+.exp-item:first-child{padding-top:0;}
+.exp-date{font-size:13px; font-weight:600; color:var(--accent3);}
+.exp-title{font-size:19px; font-weight:700; margin-bottom:4px;}
+.exp-org{font-size:14px; color:var(--text-dim); margin-bottom:16px;}
+.exp-item ul{list-style:none;}
+.exp-item li{
+  font-size:14.5px; color:var(--text-dim); padding-left:20px; position:relative; margin-bottom:10px;
+}
+.exp-item li::before{content:"▸"; position:absolute; left:0; color:var(--accent1);}
+@media (max-width:640px){.exp-item{grid-template-columns:1fr; gap:8px;}}
+
+/* ---------- projects ---------- */
+.proj-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+.proj-card{
+  background:var(--card); border:1px solid var(--line); border-radius:16px; padding:28px;
+  display:flex; flex-direction:column; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  box-shadow:0 4px 20px -10px rgba(20,30,60,0.06);
+}
+.proj-card:hover{transform:translateY(-4px); border-color:var(--accent1); box-shadow:0 14px 34px -12px rgba(61,107,240,0.2);}
+.proj-card.wide{grid-column:1 / -1;}
+.proj-flag{
+  align-self:flex-start; font-size:11px; font-weight:700; letter-spacing:.08em;
+  padding:5px 11px; border-radius:100px; background:rgba(124,92,255,0.14); color:var(--accent2);
+  margin-bottom:16px;
+}
+.proj-card h3{font-size:19px; font-weight:700; margin-bottom:10px;}
+.proj-card p{font-size:14.5px; color:var(--text-dim); margin-bottom:18px; flex-grow:1;}
+.proj-tags{display:flex; flex-wrap:wrap; gap:7px;}
+.proj-tags .pill{background:var(--bg-2);}
+@media (max-width:700px){.proj-grid{grid-template-columns:1fr;}}
+
+/* ---------- certifications ---------- */
+.cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.cert-card{
+  background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 22px;
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  box-shadow:0 4px 16px -10px rgba(20,30,60,0.06);
+}
+.cert-card .name{font-size:14.5px; font-weight:600;}
+.cert-card .id{font-size:11.5px; color:var(--text-faint);}
+.cert-card .check{
+  width:26px; height:26px; border-radius:50%; background:var(--grad-2);
+  display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; color:#06131b; font-weight:800;
+}
+@media (max-width:700px){.cert-grid{grid-template-columns:1fr;}}
+
+/* ---------- contact / footer ---------- */
+.contact-box{
+  background:linear-gradient(135deg, #FFFFFF, var(--bg-2));
+  border:1px solid var(--line); border-radius:22px;
+  padding:64px 48px; text-align:center;
+  box-shadow:0 12px 40px -16px rgba(20,30,60,0.1);
+}
+.contact-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:20px; align-items:stretch;}
+.contact-panel{
+  background:var(--card); border:1px solid var(--line); border-radius:20px; padding:38px;
+  box-shadow:0 4px 24px -10px rgba(20,30,60,0.07);
+}
+.contact-panel h3{font-size:20px; font-weight:800; margin-bottom:26px;}
+.contact-info-row{display:flex; align-items:center; gap:16px; padding-bottom:22px; margin-bottom:22px; border-bottom:1px solid var(--line);}
+.contact-info-row .ico{
+  width:44px; height:44px; border-radius:50%; background:rgba(124,79,224,0.1); color:var(--accent2);
+  display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;
+}
+.contact-info-row a{color:var(--text); font-weight:600; font-size:15px; text-decoration:underline; text-underline-offset:3px;}
+.connect-label{font-size:13px; font-weight:700; color:var(--text-dim); margin-bottom:14px;}
+.social-row{display:flex; gap:12px; margin-bottom:28px;}
+.social-row a{
+  width:42px; height:42px; border-radius:50%; background:rgba(124,79,224,0.1); color:var(--accent2);
+  display:flex; align-items:center; justify-content:center; font-size:16px; transition:transform .25s ease, background .25s ease;
+}
+.social-row a:hover{background:var(--grad); color:#fff; transform:translateY(-2px);}
+.quote-box{
+  background:var(--bg-2); border-radius:14px; padding:22px 24px;
+  font-style:italic; color:var(--text-dim); font-size:14.5px;
+}
+.form-group{margin-bottom:20px; text-align:left;}
+.form-group label{display:block; font-size:13.5px; font-weight:700; margin-bottom:8px;}
+.form-group input, .form-group textarea{
+  width:100%; padding:13px 16px; border-radius:10px; border:1px solid var(--line);
+  background:var(--bg-2); color:var(--text); font-family:'Inter',sans-serif; font-size:14px;
+  outline:none; transition:border-color .25s ease;
+}
+.form-group textarea{resize:vertical; min-height:110px;}
+.form-group input:focus, .form-group textarea:focus{border-color:var(--accent2);}
+.form-submit{
+  width:100%; padding:15px; border-radius:100px; border:none; cursor:pointer;
+  background:var(--grad); color:#fff; font-weight:700; font-size:15px;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:transform .25s ease, box-shadow .25s ease;
+  box-shadow:0 8px 24px -8px rgba(124,79,224,0.45);
+}
+.form-submit:hover{transform:translateY(-2px);}
+@media (max-width:800px){.contact-grid{grid-template-columns:1fr;}}
+.contact-box h2{font-size:clamp(26px,4vw,38px); font-weight:800; margin-bottom:16px;}
+.contact-box p{color:var(--text-dim); margin-bottom:32px; max-width:48ch; margin-left:auto; margin-right:auto;}
+.contact-links{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+footer{padding:50px 0 40px; text-align:center; color:var(--text-faint); font-size:13px;}
+</style>
+</head>
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Srushti<span>.</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+    </div>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <div class="badge"><span class="dot"></span> OPEN TO SWE / AI-ML / DATA ENGINEERING ROLES</div>
+      <h1>Hi, I'm Srushti —<br>I build <span class="grad-text">AI-powered data pipelines.</span></h1>
+      <p class="lead">Associate Software Engineer on the Databricks Practice at Alphaleo Technology. I ship production AI/ML systems and lakehouse pipelines — from a computer-vision safety MVP running for L&T, to agentic AI systems and LLM-integrated backend services.</p>
+      <div class="btn-row">
+        <a href="#projects" class="btn btn-primary">View Projects →</a>
+        <a href="Srushti_Bilurkar_Resume.pdf" download class="btn btn-resume">⬇ <u>Resume</u></a>
+        <a href="mailto:srushtivb9@gmail.com" class="btn btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="n">3</div><div class="l">DATABRICKS CERTS</div></div>
+        <div><div class="n">6</div><div class="l">PROJECTS SHIPPED</div></div>
+        <div><div class="n">1+</div><div class="l">YEAR IN PRODUCTION</div></div>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar-ring"><div class="avatar">SB</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="wrap reveal">
+  <div class="section-tag">ABOUT</div>
+  <h2 class="section-title">A backend &amp; data engineer who ships, not just prototypes.</h2>
+  <div class="about-grid">
+    <div>
+      <p>I'm an Associate Software Engineer working in Databricks' practice at Alphaleo Technology, building production AI/ML applications and data pipelines. My work sits across backend engineering and data engineering — Python/Flask services on one side, Databricks Lakehouse pipelines built on the Medallion Architecture on the other.</p>
+      <p>Most recently, I built a real-time computer-vision safety system deployed as an MVP for L&T, and I've spent the past year integrating LLMs and OpenAI APIs directly into production backend services. I hold Databricks certifications across Data Analyst, Data Engineer, and Generative AI Engineer tracks.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-row"><span class="k">Role</span><span class="v">Associate Software Engineer</span></div>
+      <div class="info-row"><span class="k">Team</span><span class="v">Databricks Practice</span></div>
+      <div class="info-row"><span class="k">Company</span><span class="v">Alphaleo Technology Pvt. Ltd.</span></div>
+      <div class="info-row"><span class="k">Location</span><span class="v">Hyderabad, Telangana</span></div>
+      <div class="info-row"><span class="k">Education</span><span class="v">B.E., CS &amp; Design — CGPA 8.3</span></div>
+      <div class="info-row"><span class="k">Based in</span><span class="v">Gulbarga, Karnataka</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="wrap reveal">
+  <div class="section-tag">SKILLS</div>
+  <h2 class="section-title">Tools I use to go from raw data to shipped feature.</h2>
+  <div class="skills-wrap">
+    <div class="skill-card">
+      <div class="icon">◆</div>
+      <h4>Languages</h4>
+      <div class="pill-row"><span class="pill">Python</span><span class="pill">C</span><span class="pill">SQL</span><span class="pill">JavaScript</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">◆</div>
+      <h4>Data &amp; AI</h4>
+      <div class="pill-row"><span class="pill">Databricks</span><span class="pill">PySpark</span><span class="pill">Delta Lake</span><span class="pill">Medallion Architecture</span><span class="pill">DLT</span><span class="pill">LLM / OpenAI API</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">◆</div>
+      <h4>Backend &amp; Web</h4>
+      <div class="pill-row"><span class="pill">Flask</span><span class="pill">REST APIs</span><span class="pill">React.js</span><span class="pill">HTML/CSS</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">◆</div>
+      <h4>Databases</h4>
+      <div class="pill-row"><span class="pill">MongoDB</span><span class="pill">PostgreSQL</span><span class="pill">MySQL</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">◆</div>
+      <h4>Tools &amp; Practices</h4>
+      <div class="pill-row"><span class="pill">Git</span><span class="pill">Agile</span><span class="pill">System Design</span></div>
+    </div>
+    <div class="skill-card">
+      <div class="icon">◆</div>
+      <h4>Analytics</h4>
+      <div class="pill-row"><span class="pill">Dashboards</span><span class="pill">Visualization</span><span class="pill">Reporting</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="wrap reveal">
+  <div class="section-tag">EXPERIENCE</div>
+  <h2 class="section-title">Where I've worked and what I shipped.</h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">JUL 2025 — PRESENT</div>
+      <div>
+        <div class="exp-title">Associate Software Engineer — Databricks Practice</div>
+        <div class="exp-org">Alphaleo Technology Pvt. Ltd., Hyderabad, Telangana</div>
+        <ul>
+          <li>Shipped multiple production AI/ML and data pipeline MVPs spanning prediction, detection, and analysis, building scalable Python/Flask services with Git-based version control.</li>
+          <li>Architected Databricks Lakehouse pipelines end-to-end using the Medallion Architecture to automate cleaning, transformation, and prep for downstream analytics.</li>
+          <li>Integrated OpenAI APIs and LLMs directly into production backend services handling live traffic.</li>
+          <li>Built real-time dashboards and visualizations from Databricks-processed data, applying Agile practices across cross-functional delivery.</li>
+          <li>Selected to build the Prime Insurance project end-to-end for the Databricks "Brick by Brick" company hackathon.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">NOV 2024 — FEB 2025</div>
+      <div>
+        <div class="exp-title">Cloud Application Developer — Internship</div>
+        <div class="exp-org">Skill India Digital Hub / Rooman Technologies</div>
+        <ul>
+          <li>Built a cloud-based Library Management System in Python with RESTful APIs, automating cataloging and borrowing workflows with real-time inventory tracking.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="wrap reveal">
+  <div class="section-tag">PROJECTS</div>
+  <h2 class="section-title">Things I've built end-to-end.</h2>
+  <div class="proj-grid">
+    <div class="proj-card wide">
+      <div class="proj-flag">DEPLOYED FOR CLIENT — L&T</div>
+      <h3>Construction Site Safety Monitoring — L&T MVP</h3>
+      <p>Developed and deployed a real-time PPE-violation detection system as a Minimum Viable Product for L&T, monitoring live feeds from construction site cameras to identify safety compliance breaches in real time, with centralized alerting for site supervisors.</p>
+      <div class="proj-tags pill-row">
+        <span class="pill">YOLOv8</span><span class="pill">GPT-4o Vision</span><span class="pill">Multi-threaded Python</span><span class="pill">MongoDB</span><span class="pill">Databricks Delta Lake</span><span class="pill">React</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <h3>AI Drug Demand Forecasting Platform</h3>
+      <p>Built an ML pipeline forecasting medication demand from disease and weather data on Databricks to support healthcare supply planning.</p>
+      <div class="proj-tags pill-row">
+        <span class="pill">Databricks</span><span class="pill">Medallion Architecture</span><span class="pill">NeuralProphet</span><span class="pill">Random Forest</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <h3>Agentic AI Travel Planner</h3>
+      <p>Built an autonomous LLM agent that plans full multi-city trips end-to-end — routing, calendar, and email confirmations — orchestrating 4+ external APIs without manual input.</p>
+      <div class="proj-tags pill-row">
+        <span class="pill">Databricks</span><span class="pill">LLM Agents</span><span class="pill">Google Maps API</span><span class="pill">SMTP</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <h3>NLP Smart Facilitator — Spectrum AI</h3>
+      <p>Built an AI voice/text virtual assistant handling real-time IT-industry support queries, using ASR and NLP on a scalable Flask backend.</p>
+      <div class="proj-tags pill-row">
+        <span class="pill">ASR</span><span class="pill">NLP</span><span class="pill">OpenAI API</span><span class="pill">Flask</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-flag">DATABRICKS HACKATHON</div>
+      <h3>Prime Insurance — "Brick by Brick"</h3>
+      <p>Built an end-to-end insurance data pipeline in Databricks — ingestion, cleaning, transformation, ETL in PySpark — with dashboards surfacing actionable insights.</p>
+      <div class="proj-tags pill-row">
+        <span class="pill">Databricks</span><span class="pill">PySpark</span><span class="pill">ETL</span><span class="pill">Dashboards</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="wrap reveal">
+  <div class="section-tag">CERTIFICATIONS</div>
+  <h2 class="section-title">Validated, credentialed expertise.</h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div><div class="name">Databricks Certified Data Analyst Associate</div><div class="id">#162087524</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">Databricks Certified Data Engineer Associate</div><div class="id">#168367773</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">Databricks Certified Generative AI Engineer Associate</div><div class="id">#183776293</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">HCLSoftware Certified Foundation Developer</div><div class="id">Volt MX 9.5</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">Cloud Application Developer</div><div class="id">Rooman Technologies</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">Anthropic — Claude API, Claude Code, Agent Skills, MCP</div><div class="id">4 certifications</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">Data Engineer Certification</div><div class="id">Udemy</div></div>
+      <div class="check">✓</div>
+    </div>
+    <div class="cert-card">
+      <div><div class="name">Intro to IoT · TCS iON Career Edge</div><div class="id">NPTEL / TCS</div></div>
+      <div class="check">✓</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap reveal">
+  <div class="section-tag">CONTACT</div>
+  <h2 class="section-title">Let's build something together.</h2>
+  <div class="contact-grid">
+    <div class="contact-panel">
+      <h3>Contact Information</h3>
+      <div class="contact-info-row">
+        <div class="ico">✉</div>
+        <a href="mailto:srushtivb9@gmail.com">srushtivb9@gmail.com</a>
+      </div>
+      <div class="connect-label">Connect with me</div>
+      <div class="social-row">
+        <a href="#" onclick="return false;" title="LinkedIn">in</a>
+        <a href="#" onclick="return false;" title="GitHub">gh</a>
+        <a href="tel:+916363514055" title="Call">☎</a>
+      </div>
+      <div class="quote-box">"I'm always open to discussing Software Engineering, AI/ML, and Data Engineering roles, or new project opportunities."</div>
+    </div>
+    <div class="contact-panel">
+      <h3>Send a Message</h3>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="email@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea name="message" placeholder="Hello, I'd like to discuss a role..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">➤ Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Srushti Bilurkar · Gulbarga, Karnataka, India
+</footer>
+
+<script>
+// active nav link on scroll
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const match = document.querySelector('.nav-links a[href="#'+entry.target.id+'"]');
+      if(match) match.classList.add('active');
+    }
+  });
+}, {rootMargin:'-45% 0px -50% 0px'});
+sections.forEach(s => navObserver.observe(s));
+
+// reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.12});
+reveals.forEach(r => revealObserver.observe(r));
+</script>
+
+</body>
+</html>
